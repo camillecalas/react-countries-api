@@ -44,4 +44,11 @@ const StyledNav = styled.nav`
 		border: none;
 		background: transparent;
 	}
+
+	@media (max-width: 565px) {
+		justify-content: space-around;
+        padding: 0; /* Remove padding */
+		width: 100%;
+	}
+	
 `;
