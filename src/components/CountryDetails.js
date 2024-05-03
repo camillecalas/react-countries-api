@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
-import { useNavigate, useParams } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import axios from 'axios';
 
 const CountryDetails = () => {
 	const {countryId} = useParams()
+	// const location = useLocation();
+	// const countryId = location.pathname.substring(1);
 	const navigate = useNavigate();
 
 	const handleCountryDetails= (countryId) => {

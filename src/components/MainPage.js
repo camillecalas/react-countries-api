@@ -27,12 +27,14 @@ const MainPage = ({handleSearch}) => {
 
 	return (
 		<>
+		<StyledComponent>
 		<Search onSearch={handleSearch}/>
+			</StyledComponent>
 		<StyledCards>
 			{countries && countries.map((country) => {
 				return (
 					<div
-						key={country.cca2}>
+					key={country.cca2}>
 						<CardInfo country={country}/>
 					</div>
 				)
@@ -43,6 +45,11 @@ const MainPage = ({handleSearch}) => {
 }
 
 export default MainPage
+
+const StyledComponent = styled.div`
+padding: 2rem 5rem;
+
+`;
 
 const StyledCards = styled.div`
 	/* width: 100vh; */
