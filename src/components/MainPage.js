@@ -3,10 +3,14 @@ import { useEffect } from 'react'
 import axios from 'axios';
 import CardInfo from './CardInfo';
 import styled from 'styled-components';
+import Search from './SearchBar';
 
-const MainPage = () => {
+const MainPage = ({handleSearch}) => {
+
 	const europeUrl = `https://restcountries.com/v3.1/region/europe`
 	const [countries, setCountries] = useState(null);
+
+
 	
 	useEffect(() => {	
 		const fetchCountriesDetails = async () => {
@@ -22,6 +26,8 @@ const MainPage = () => {
 	},[])
 
 	return (
+		<>
+		<Search onSearch={handleSearch}/>
 		<StyledCards>
 			{countries && countries.map((country) => {
 				return (
@@ -32,6 +38,7 @@ const MainPage = () => {
 				)
 			})}
 		</StyledCards>
+			</>
 	)
 }
 
@@ -45,4 +52,9 @@ const StyledCards = styled.div`
 	flex-wrap: wrap;
 	
 	gap: 3rem;
+
+	@media (max-width: 675px) {
+		flex-direction: column;
+		align-items: center;
+	}	
 `;

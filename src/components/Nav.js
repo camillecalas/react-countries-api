@@ -1,5 +1,6 @@
 import React from 'react'
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 //ICONES
 import moon from '../img/moon-regular.svg';
@@ -11,8 +12,12 @@ import styled from 'styled-components';
 
 
 const Nav = ({theme, setTheme}) => {
-
+	const navigate = useNavigate();
 	const [moonIcon, setMoonIcon] = useState(<img src={moon_solid} style={{ width: '1rem' }} alt='moon-dark'/>)
+
+	const handleHome = () => {
+		navigate(`/`)
+	}
 
 	const themeToggler = () => {
         setTheme(theme === 'light' ? 'dark' : 'light');
@@ -25,7 +30,7 @@ const Nav = ({theme, setTheme}) => {
 
 	return (
 		<StyledNav>
-			<h2>Where in the world</h2>
+			<h2 onClick={() => handleHome()}>Where in the world</h2>
 			<button onClick={themeToggler}> {moonIcon} </button>
 		</StyledNav>
 	)

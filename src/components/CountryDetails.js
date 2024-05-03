@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
-import { useLocation, useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import axios from 'axios';
 
 const CountryDetails = () => {
@@ -9,6 +9,10 @@ const CountryDetails = () => {
 
 	const handleCountryDetails= (countryId) => {
 		navigate(`/${countryId}`)
+	}
+
+	const handleHome = () => {
+		navigate(`/`)
 	}
 	const [country, setCountry] = useState(null)
 
@@ -27,11 +31,10 @@ const CountryDetails = () => {
 	}, [countryId])
 	
 	return (
-		
 		<StyledCard>
-	    	{country && ( 
-                <>
-                   	<img src={country.flags.png} alt={country.flags.alt}/>
+			{country && ( 
+				<>
+					<img src={country.flags.png} alt={country.flags.alt}/>
 					<StyledBigContainer>
 							<h2>{country.name?.common}</h2>
 						<StyledTextCountainer>
@@ -51,16 +54,17 @@ const CountryDetails = () => {
 							<p><strong>Border Countries:</strong> {Object.values(country.borders).map(border => {
 								return (<button 
 									onClick={() => handleCountryDetails(border)}>{border}</button>)
-							})}</p>
+								})}</p>
 					</StyledBigContainer>
-                </>
-            )}
-			</StyledCard>
-		
+				</>
+			)}
+		</StyledCard>
   	)
 }
 
 export default CountryDetails
+
+
 
 const StyledCard = styled.div`
 	display: flex;
@@ -143,10 +147,3 @@ const StyledTextCountainer = styled.div`
 	}
 `
 
-const StyledBordersCountries = styled.div`
-	/* @media (max-width: 565px) {
-		justify-content:center;
-		padding-left: 0rem;
-	}	 */
-
-`;
