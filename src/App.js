@@ -20,11 +20,9 @@ function App() {
         try {
             const response = await axios.get(
                 `https://restcountries.com/v3.1/name/${query}?fullText=true`
-				// `https://restcountries.com/v3.1/name/${query}`
             );
 			console.log(response.data)
             setSearchResults(response.data);
-            // Naviguer vers une nouvelle URL pour afficher les résultats de recherche
             navigate("/search-results");
         } catch (error) {
             console.error("Error searching:", error);

@@ -38,25 +38,24 @@ const CountryDetails = () => {
 				<>
 					<img src={country.flags.png} alt={country.flags.alt}/>
 					<StyledBigContainer>
-							<h2>{country.name?.common}</h2>
+						<h2>{country.name?.common}</h2>
 						<StyledTextCountainer>
-								<StyledTextBox>
-									<p><strong>Native Name:</strong> {country.name?.nativeName?.official} {Object.values(country.name.nativeName).map(name => `${name.official}`)}</p>
-									<p><strong>Population:</strong> {country.population}</p>
-									<p><strong>Region:</strong> {country.region}</p>
-									<p><strong>Sub Region:</strong> {country.subregion}</p>
-									<p><strong>Capital:</strong> {country.capital}</p>
-								</StyledTextBox>
 							<StyledTextBox>
-								<p><strong>Top Level Domain:</strong> {country.region}</p>
-								<p><strong>Currencies:</strong> {Object.values(country.currencies).map(currency => `${currency.name} (${currency.symbol})`).join(', ')}</p>
-								<p><strong>Languages:</strong> {Object.values(country.languages).join(', ')}</p>
+								<p><strong>Native Name:</strong> {country.name?.nativeName?.official}</p>
+								<p><strong>Population:</strong> {country.population}</p>
+								<p><strong>Region:</strong> {country.region}</p>
+								<p><strong>Sub Region:</strong> {country.subregion}</p>
+								<p><strong>Capital:</strong> {country.capital}</p>
+							</StyledTextBox>
+							<StyledTextBox>
+								<p><strong>Top Level Domain:</strong> {country.tld?.join(', ')}</p>
+								<p><strong>Currencies:</strong> {country.currencies && Object.values(country.currencies).map(currency => `${currency.name} (${currency.symbol})`).join(', ')}</p>
+								<p><strong>Languages:</strong> {country.languages && Object.values(country.languages).join(', ')}</p>
 							</StyledTextBox>
 						</StyledTextCountainer>
-							<p><strong>Border Countries:</strong> {Object.values(country.borders).map(border => {
-								return (<button 
-									onClick={() => handleCountryDetails(border)}>{border}</button>)
-								})}</p>
+						<p><strong>Border Countries:</strong> {country.borders && country.borders.map(border => {
+							return (<button key={border} onClick={() => handleCountryDetails(border)}>{border}</button>)
+						})}</p>
 					</StyledBigContainer>
 				</>
 			)}
