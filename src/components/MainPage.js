@@ -26,29 +26,44 @@ const MainPage = ({handleSearch}) => {
 	},[])
 
 	return (
-		<>
-		<StyledComponent>
-		<Search onSearch={handleSearch}/>
+		<StyledContainer>
+			<StyledComponent>
+				<Search onSearch={handleSearch}/>
 			</StyledComponent>
-		<StyledCards>
-			{countries && countries.map((country) => {
-				return (
-					<div
-					key={country.cca2}>
-						<CardInfo country={country}/>
-					</div>
-				)
-			})}
-		</StyledCards>
-			</>
+			<StyledCards>
+				{countries && countries.map((country) => {
+					return (
+						<div
+						key={country.cca2}>
+							<CardInfo country={country}/>
+						</div>
+					)
+				})}
+			</StyledCards>
+		</StyledContainer>
 	)
 }
 
 export default MainPage
 
-const StyledComponent = styled.div`
-padding: 2rem 5rem;
+const StyledContainer = styled.div`
+/* @media (max-width: 675px) {
+	display: flex;
+	flex-direction: column;
+	/* align-items: center; */
+	/* justify-content: center; */
+		 */
+`;
 
+const StyledComponent = styled.div`
+	padding: 2rem 5rem;
+	@media (max-width: 675px) {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		/* padding: 0rem; */
+		/* width: 100%; */
+	}	
 `;
 
 const StyledCards = styled.div`
